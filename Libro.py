@@ -32,6 +32,8 @@ class Libro:
 
     @classmethod
     def libro_fisico(cls,titulo:str,autor: str, isbn: str, years: str, stock: int) -> Libro:
+        if stock <= 0:
+            raise ValueError("Error: El stock debe ser mayor a 0")
         libro = cls(titulo,autor,isbn,years)
         libro.tipo = cls.TIPO_FISICO
         libro.stock = stock
@@ -54,6 +56,3 @@ class Libro:
 
     def __repr__(self):
         return f"{type(self).__name__}(titulo='{self.titulo}', autor='{self.autor}, isbn='{self.isbn}, año='{self.years}', tipo='{self.tipo}', stock={self.stock}"
-
-l1 = Libro.libro_fisico("pinocho","nose","12312314124213","2014", stock= 5)
-l2 = Libro.libro_digital("nose","21312312", "s123123213", "2304")
