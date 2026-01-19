@@ -39,6 +39,12 @@ class Libro:
         libro.stock = stock
         return libro
 
+    @property
+    def disponible(self) -> bool:
+        if (self.tipo == Libro.TIPO_FISICO and self.stock > 0) or (self.tipo == Libro.TIPO_DIGITAL):
+            return True
+        return False
+
     def __eq__(self, other):
         if not isinstance(other,Libro):
             raise NotImplemented
@@ -49,7 +55,7 @@ class Libro:
             raise NotImplemented
         return self.titulo < other.titulo
 
-    def __str__(self) -> str:
+    def __str__(self):
         if self.tipo == Libro.TIPO_DIGITAL:
             return f"Libro: {self.titulo}, Autor: {self.autor} ISBN: {self.isbn}, Año: {self.years} Tipo: {self.tipo}"
         return f"Libro: {self.titulo}, Autor: {self.autor} ISBN: {self.isbn}, Año: {self.years} Tipo: {self.tipo}, Stock: {self.stock}"
