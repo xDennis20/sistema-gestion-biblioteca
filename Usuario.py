@@ -7,6 +7,7 @@ class Usuario:
         TIPO_REGULAR: 3,
         TIPO_VIP: 10
     }
+    
     def __init__(self,nombre: str, dni: str, correo: str):
         self.nombre = nombre
         self.dni = dni
